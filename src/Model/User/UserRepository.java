@@ -1,10 +1,10 @@
 ﻿package Model.User;
 
+import Model.Data.Storage;
 import Model.Repository.BaseRepository;
 
 public class UserRepository extends BaseRepository<UserEntity> {
-    private static final String REPOSITORY_NAME = "User";
-    public UserRepository() {
-        super(REPOSITORY_NAME);
+    public UserRepository(Storage storage) {
+        super(storage);
     }
 }
