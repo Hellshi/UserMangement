@@ -1,6 +1,7 @@
-﻿package Model.Repository;
+package Model.Repository;
 
 import Model.Data.Storage;
+
 import java.util.Map;
 
 public class BaseRepository<T> {

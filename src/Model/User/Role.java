@@ -1,4 +1,4 @@
-﻿package Model.User;
+package Model.User;
 public enum Role {
     Dev("dev"),
     PO("po"),

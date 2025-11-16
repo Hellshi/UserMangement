@@ -1,4 +1,4 @@
-﻿package Model.User;
+package Model.User;
 
 import Model.Repository.BaseEntity;
 

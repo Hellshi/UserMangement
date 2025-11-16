@@ -1,4 +1,4 @@
-﻿package Model.User;
+package Model.User;
 
 public interface IUser {
     String id = "";

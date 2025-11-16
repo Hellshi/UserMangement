@@ -1,4 +1,4 @@
-﻿package Controller.Users;
+package Controller.Users;
 
 import Model.User.Role;
 import Model.User.UserEntity;
@@ -16,7 +16,8 @@ public class UserController {
     public void createUser(double salary, String name, String role) {
         Role parsedRole = Role.fromString(role);
         this.userEntity.setAttributes(salary, name, parsedRole);
-        userRepository.create(this.userEntity);
+        var user = userRepository.create(this.userEntity);
+        System.out.println(user);
     }
 
     public void readUser(int id) {

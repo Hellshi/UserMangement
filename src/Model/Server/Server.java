@@ -1,10 +1,12 @@
-﻿package Model.Server;
+package Model.Server;
 import Controller.Users.UserController;
+import Controller.Users.UserControllerFactory;
 
 import java.util.Scanner;
 
 public class Server {
-    UserController userController;
+    UserController userController = UserControllerFactory.getUserController();
+    private static Server instance = null;
     Scanner scanner = new Scanner(System.in);
 
     public void start() {
@@ -35,8 +37,11 @@ public class Server {
         switch (action) {
             case CREATE_USER:
                 System.out.println("[SERVER] Creating user...");
+                System.out.println("Digite o nome do usuario: ");
                 String name = scanner.nextLine().trim();
+                System.out.println("Digite o salario: ");
                 double salary = Double.parseDouble(scanner.nextLine().trim());
+                System.out.println("Digite o role do user: ");
                 String role = scanner.nextLine().trim();
                 this.userController.createUser(salary, name, role);
                 break;
@@ -62,5 +67,12 @@ public class Server {
         }
 
         System.out.println();
+    }
+
+    public static Server getInstance() {
+        if(instance == null) {
+            instance = new Server();
+        }
+        return instance;
     }
 }

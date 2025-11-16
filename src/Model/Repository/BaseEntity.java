@@ -1,40 +1,47 @@
-﻿package Model.Repository;
+package Model.Repository;
 import java.lang.reflect.Field;
 
 public abstract class BaseEntity<T> {
     @Override
     public String toString() {
-        return this.format((T) this);
+        return this.format();
     }
 
-    public String format(T obj) {
-        Class<?> clazz = obj.getClass();
-        Field[] fields = clazz.getDeclaredFields();
+    public String format() {
+        try {
+            Class<?> clazz = this.getClass();
+            Field[] fields = clazz.getDeclaredFields();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(clazz.getSimpleName()).append("{");
+            StringBuilder sb = new StringBuilder();
+            sb.append("{");
 
-        boolean first = true;
+            boolean first = true;
 
-        for (Field field : fields) {
-            field.setAccessible(true);
-
-            try {
-                Object value = field.get(obj);
+            for (Field field : fields) {
+                field.setAccessible(true);
+                Object value = field.get(this);
 
                 if (!first) sb.append(", ");
                 first = false;
 
-                sb.append(field.getName())
-                        .append("=")
-                        .append("'").append(value).append("'");
+                sb.append("\"")
+                        .append(field.getName())
+                        .append("\": ");
 
-            } catch (IllegalAccessException e) {
-                System.out.println("Invalid argument");
+                if (value == null) {
+                    sb.append("null");
+                } else if (value instanceof Number || value instanceof Boolean) {
+                    sb.append(value);
+                } else {
+                    sb.append("\"").append(value).append("\"");
+                }
             }
-        }
 
-        sb.append("}");
-        return sb.toString();
+            sb.append("}");
+            return sb.toString();
+
+        } catch (Exception e) {
+            return "{}";
+        }
     }
 }

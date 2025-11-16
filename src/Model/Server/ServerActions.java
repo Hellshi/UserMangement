@@ -1,4 +1,4 @@
-﻿package Model.Server;
+package Model.Server;
 
 public enum ServerActions {
     CREATE_USER("create"),

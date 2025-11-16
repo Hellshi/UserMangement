@@ -24,6 +24,6 @@ bin/
 
 ### VS Code ###
 .vscode/
-
+src/Model/Data/DB/*
 ### Mac OS ###
 .DS_Store

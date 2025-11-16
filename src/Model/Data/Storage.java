@@ -1,17 +1,24 @@
-﻿package Model.Data;
+package Model.Data;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Storage {
     private final Map<Integer, String> storage = new HashMap<>();
-
+    private final String directoryPath;
     final String fileName;
 
     public Storage(String name) {
-        this.fileName = name + ".json";
+        this.directoryPath = "src/Model/DB";
+        this.fileName = this.directoryPath + "/" + name + ".json";
+
+        File dir = new File(directoryPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
     }
 
     private void writeToFile() {

@@ -1,4 +1,4 @@
-﻿package Controller.Users;
+package Controller.Users;
 
 import Model.Data.Storage;
 import Model.User.UserEntity;
