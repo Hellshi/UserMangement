@@ -9,7 +9,7 @@
 
     <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
 
-    <Label text="Sistema de Usuários" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+    <Label text="Gerenciador de Funcionários" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
 
     <HBox spacing="10" alignment="CENTER">
         <TextField fx:id="txtName" promptText="Nome Completo" prefWidth="200"/>
